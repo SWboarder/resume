@@ -210,34 +210,6 @@
 
 /*IMAGES*/
 
-	#learn{
-		background-image: url('../images/learn.jpg');
-	}
-
-	#palmtree{
-		background-image: url('../images/palmtree.jpg');
-	}
-
-	#bear{
-		background-image: url('../images/bear.jpg');
-	}
-
-	#me{
-		background-image: url('../images/me.jpg');
-	}
-
-	#life{
-		background-image: url('../images/life.jpg');
-	}
-
-	#board{
-		background-image: url('../images/board.jpg');
-	}
-
-	#explore{
-		background-image: url('../images/explore.jpg');
-	}
-
 	#attentionImage{
 		background-image: url("../images/attentionToDetail.png");
 	}
@@ -482,14 +454,25 @@
 			}
 
 		.block{
-			display: inline-block;	
+			display: flex;	
 			float: left;
 			height: 33.3%;
-			margin: 0px;
-			padding-top: 0px;
+			margin: 0;
+			padding: 0;
 			text-align: center;
 			width: 20%;
 			z-index: 1;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.block > .background{
+			width: 100%;
+			height: 100%;
+			position: flex;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
 		}
 
 		.bodyBlock{

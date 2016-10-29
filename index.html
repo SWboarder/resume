@@ -14,7 +14,10 @@
 		<link rel="stylesheet" type="text/css" href="./css/engineer.css">
 		<link rel="stylesheet" type="text/css" href="./css/styles.css">
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-		<script src="./js/engineer.js"></script>
+		<script type='text/javascript' src="./js/jquery-3.1.1.min.js"></script>
+		<script type='text/javascript' src="./js/knockout.js"></script>
+		<script type='text/javascript' src="./js/knockout-mapping.js"></script>
+		<script type='text/javascript' src="./js/engineer.js"></script>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,139 +36,40 @@
 		<!--LOADER-->
 			<div id="loader">
 				<div class="spinner">
-					  <div class="spinner-container container1">
-					    <div class="circle1"></div>
-					    <div class="circle2"></div>
-					    <div class="circle3"></div>
-					    <div class="circle4"></div>
-					  </div>
-					  <div class="spinner-container container2">
-					    <div class="circle1"></div>
-					    <div class="circle2"></div>
-					    <div class="circle3"></div>
-					    <div class="circle4"></div>
-					  </div>
-					  <div class="spinner-container container3">
-					    <div class="circle1"></div>
-					    <div class="circle2"></div>
-					    <div class="circle3"></div>
-					    <div class="circle4"></div>
-					  </div>
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
 					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+				</div>
 			</div>
 
 		<!--THE MAIN PAGE-->
-			<div id="learn" class="block center-norepeat cover"></div>
-
-			<a href="#educationBlock">
-				<div id="education" class="block violet">
-					<div id="educationIcon" class="icon" data-icon="8">
+			<!-- ko foreach: blocks -->
+				<div class="block" data-bind="click: navigateToBlock, event: {onmouseover: expandBlock, onmouseout: shrinkBlock}, css: {'link-cursor' : interacts()}, attr: {id: id()}">
+					<div data-bind="attr: {class: backgroundColor()+' background '}, style: { 'background-image': 'url('+img()+')'}">	
+						<!-- ko if: icon -->
+							<span class="icon" data-bind="attr: {'data-icon' : icon()}"></span>
+						<!-- /ko -->
+						<!-- ko if: text -->
+							<span class="text" data-bind="text: text()"></span>
+						<!-- /ko -->
 					</div>
 				</div>
-			</a>
-
-			<a href="#aboutBlock">
-				<div id="about" class="block light-teal">
-					<div id="aboutIcon" class="icon" data-icon="l">
-					</div>
-				</div>
-			</a>
-
-			<div id="palmtree" class="block center-norepeat cover"></div>
-
-			<a href="#workBlock">
-				<div id="work" class="block grey">
-					<div id="workIcon" class="icon" data-icon="w">
-					</div>
-				</div>
-			</a>
-
-			<div id="bear" class="block center-norepeat cover"></div>
-			
-			<div id="nameFirst" class="block dark-grey">
-				<div id="nameFirstIcon" class="icon">Kristine
-				</div>
-			</div>
-
-			<div id="me" class="block center-norepeat cover"></div>
-
-			<div id="nameLast" class="block dark-grey">
-				<div id="nameLastIcon" class="icon">Tomlinson
-				</div>
-			</div>
-
-			<div id="life" class="block center-norepeat cover"></div>
-
-			<a href="#qualsBlock">
-				<div id="quals" class="block light-grey">
-					<div id="qualsIcon" class="icon" data-icon=")">
-					</div>
-				</div>
-			</a>
-
-			<div id="board" class="block center-norepeat cover"></div>
-
-			<a href="#awardsBlock">
-				<div id="awards" class="block light-violet">
-					<div id="awardsIcon" class="icon" data-icon="b">
-					</div>
-				</div>
-			</a>
-
-			<a href="#contactBlock">
-				<div id="contact" class="block teal">
-					<div id="contactIcon" class="icon" data-icon="e">
-					</div>
-				</div>
-			</a>
-
-			<div id="explore" class="block center-norepeat cover"></div>
-
-		<!--THE STICKY SIDE NAV BAR-->
-			<div id="menuBar">
-				<a href="#home">
-					<div id="homeTab" class="tabTop dark-grey">
-						<div id="homeTabIcon" class="tabIcon" data-icon="h">
-						</div>
-					</div>
-				</a>
-				<a href="#educationBlock">
-					<div id="educationTab" class="tab violet">
-						<div id="educationTabIcon" class="tabIcon" data-icon="8">
-						</div>
-					</div>
-				</a>
-				<a href="#aboutBlock">
-					<div id="aboutTab" class="tab light-teal">
-						<div id="aboutTabIcon" class="tabIcon" data-icon="l">
-						</div>
-					</div>
-				</a>
-				<a href="#workBlock">
-					<div id="workTab" class="tab grey">
-						<div id="workTabIcon" class="tabIcon" data-icon="w">
-						</div>
-					</div>
-				</a>
-				<a href="#qualsBlock">
-					<div id="qualsTab" class="tab light-grey">
-						<div id="qualsTabIcon" class="tabIcon" data-icon=")">
-						</div>
-					</div>
-				</a>
-				<a href="#awardsBlock">
-					<div id="awardsTab" class="tab light-violet">
-						<div id="awardsTabIcon" class="tabIcon" data-icon="b">
-						</div>
-					</div>
-				</a>
-				<a href="#contactBlock">
-					<div id="contactTab" class="tab teal">
-						<div id="contactTabIcon" class="tabIcon" data-icon="e">
-						</div>
-					</div>
-				</a>		
-			</div>
+			<!-- /ko -->
 
 		<!--THE CONTENT BLOCKS-->
 
