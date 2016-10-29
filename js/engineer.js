@@ -136,81 +136,49 @@ var blocks = [
 	}
 ];
 
-// var blocks = [
-// 	{
-// 		"id" : "learn"
-// 	},
-// 	{
-// 		"id" : "about"
-// 	},
-// 	{
-// 		"id" : "education"
-// 	},
-// 	{
-// 		"id" : "palmtree"
-// 	},
-// 	{
-// 		"id" : "work"
-// 	},
-// 	{
-// 		"id" : "bear",
-// 	},
-// 	{
-// 		"id" : "nameFirst"
-// 	},
-// 	{
-// 		"id" : "me"
-// 	},
-// 	{
-// 		"id" : "nameLast"
-// 	},
-// 	{
-// 		"id" : "life"
-// 	},
-// 	{
-// 		"id" : "quals"
-// 	},
-// 	{
-// 		"id" : "board"
-// 	},
-// 	{
-// 		"id" : "awards"
-// 	},
-// 	{
-// 		"id" : "contact"
-// 	},
-// 	{
-// 		"id" : "explore"
-// 	}
-// ];
-
 var viewModel;
 
 var block_model = function(data){
-	console.log(data);
 	var self = this;
-	console.log(self);
 	ko.mapping.fromJS(data, {}, self);
-
-	self.navigateToBlock = function(){
-
-	}
-
-	self.expandBlock = function(){
-
-	}
-
-	self.shrinkBlock = function(){
-
-	}
 }
 
 var resume_model = function(){
 	var self = this;
 	self.blocks = ko.observableArray();
+	self.width = ko.observable(window.innerWidth);
 
 	for(var i = 0; i<blocks.length;i++){
 		self.blocks.push(new block_model(blocks[i]));
+	}
+
+	self.navigateToBlock = function(){
+		console.log("navigate");
+		var obj = this;
+		var offset = document.getElementById(obj.id()+'Block').offsetTop;
+		document.getElementById('home').scrollTop = offset;
+	}
+
+	self.expandBlock = function(){
+		var obj = this;
+		if(obj.interacts() && self.width() > 640){
+			console.log("expand");
+			$("#"+obj.interacts()).addClass('hide');
+			$("#"+obj.id()).addClass('grow');
+		}
+	}
+
+	self.shrinkBlock = function(){
+		var obj = this;
+		if(obj.interacts() && self.width() > 640){
+			console.log("shrink");
+			$("#"+obj.interacts()).removeClass('hide');
+			$("#"+obj.id()).removeClass('grow');
+		}
+	}
+
+	self.goHome = function(){
+		document.getElementById('home').scrollTop = 0;
 	}
 
 	var loader = document.getElementById("loader");
@@ -222,6 +190,10 @@ var resume_model = function(){
     setTimeout(function(){
 		loader.style.display = "none";
     },delay);
+
+    $(window).resize(function(){
+    	self.width(window.innerWidth);
+    });
 }
 
 //EVENT LISTENER TO INITIATE BEHAVIOURS
