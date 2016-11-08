@@ -153,10 +153,9 @@ var resume_model = function(){
 	}
 
 	self.navigateToBlock = function(){
-		console.log("navigate");
 		var obj = this;
-		var offset = document.getElementById(obj.id()+'Block').offsetTop;
-		document.getElementById('home').scrollTop = offset;
+		var offset = $('#'+obj.id()+'Block').offset().top;
+		$(document).scrollTop(offset);
 	}
 
 	self.expandBlock = function(){
@@ -178,12 +177,13 @@ var resume_model = function(){
 	}
 
 	self.goHome = function(){
-		document.getElementById('home').scrollTop = 0;
+		$(document).scrollTop(0);
 	}
 
 	self.goToContact = function(){
-		var offset = document.getElementById('contactBlock').offsetTop;
-		document.getElementById('home').scrollTop = offset;
+		var offset = $('#contactBlock').offset().top;
+		console.log(offset);
+		$(document).scrollTop(offset);
 	}
 
 	var loader = document.getElementById("loader");
@@ -206,8 +206,6 @@ hideCondensedContent = function(){
 	for(var i = 0; i<collapsibles.length; i++){
 		$('#'+collapsibles[i].id).children('.condensed-content').hide();
 		$('#'+collapsibles[i].id).children('.condensed-controller').click(function(){
-			console.log(this);
-			console.log($(this).siblings());
 			if($(this).html() == '+'){
 				$(this).siblings().next('div').slideDown(500);
 				$(this).html('-');
