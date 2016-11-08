@@ -566,6 +566,49 @@
 				width: 80%;
 			}
 
+		.condensed{
+			position: relative;
+			background-color: rgba(255,255,255,0.3);
+			width: 100%;
+			left: -5%;
+			padding: 0 5%;
+		}
+
+		.condensed-title{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 64px;
+			width: 100%;
+			background-color: rgba(255,255,255,0.3);
+		}
+
+		.condensed > h2{
+			font-weight: normal;
+			font-style: italic;
+			z-index: 1;
+		}
+
+		.condensed-controller{
+			/*position: absolute;
+			top: 0;
+			left: calc(50% - 22px);
+			font-size: 30px;
+			margin: 10px;
+			height: 44px;
+			width: 44px;*/
+			position: relative;
+			font-size: 30px;
+			margin: 10px;
+			height: 44px;
+			width: 44px;
+		}
+
+		.condensed-content{
+			width: 100%;
+			margin-top: 10px;
+		}
+
 		.containerImage{
 			/*border-color: #212126;*/
 			border-color: #4d4d51;
