@@ -463,6 +463,17 @@
 				padding-top: 25%;
 			}
 
+		.awardsText .innerContainerText{
+			display: flex;
+			justify-content: left;
+			flex-wrap: wrap;
+		}
+
+		.awardsText .innerContainerText .simple-block{
+			width: auto;
+			padding: 10px 5%;
+		}
+
 		.block{
 			display: flex;	
 			float: left;
