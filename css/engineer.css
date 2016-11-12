@@ -921,11 +921,6 @@
 	}
 
 	/*Fall backs in case js doesn't work*/
-	.block{
-		height: 14%;
-		width: 100%;
-	}
-
 	.containerImage{
 		height: 150px;
 		width: 150px;
