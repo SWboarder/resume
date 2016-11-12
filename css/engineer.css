@@ -472,6 +472,7 @@
 			text-align: center;
 			width: 20%;
 			z-index: 1;
+			background-color: #aaa;
 		}
 
 		.block.interacts{
