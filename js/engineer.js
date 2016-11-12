@@ -93,7 +93,7 @@ var blocks = [
 		"id" : "quals",
 		"icon" : ")",
 		"img" : "",
-		"text" : "Volunteer",
+		"text" : "Projects",
 		"number" : 10,
 		"interacts" : "board",
 		"backgroundColor" : "light-grey"
