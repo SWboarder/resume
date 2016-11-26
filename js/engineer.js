@@ -186,16 +186,6 @@ var resume_model = function(){
 		$(document).scrollTop(offset);
 	}
 
-	var loader = document.getElementById("loader");
-	
-	loader.style.opacity = "0";
-	
-	//Use delay so that you can see the fade before the loader is destroyed, KAPOW!
-	var delay=500;//1 seconds
-    setTimeout(function(){
-		loader.style.display = "none";
-    },delay);
-
     $(window).resize(function(){
     	self.width(window.innerWidth);
     });
@@ -223,4 +213,16 @@ $(document).ready(function(){
 	viewModel = new resume_model();
 	ko.applyBindings(viewModel,document.getElementsByTagName('html')[0]);
 	hideCondensedContent();
+});
+
+$(window).on("load", function(){
+	var loader = document.getElementById("loader");
+	
+	loader.style.opacity = "0";
+	
+	//Use delay so that you can see the fade before the loader is destroyed, KAPOW!
+	var delay=500;//1 seconds
+    setTimeout(function(){
+		loader.style.display = "none";
+    },delay);
 });
