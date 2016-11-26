@@ -58,7 +58,7 @@
 
 		<!--THE MAIN PAGE-->
 			<!-- ko foreach: blocks -->
-				<div class="block" data-bind="event: {mouseover: $parent.expandBlock, mouseout: $parent.shrinkBlock, mouseup: $parent.navigateToBlock}, css: {'interacts' : interacts()}, attr: {id: id()}">
+				<div class="block" data-bind="event: {mouseover: $parent.expandBlock, mouseout: $parent.shrinkBlock, mousedown: $parent.navigateToBlock}, css: {'interacts' : interacts()}, attr: {id: id()}">
 					<div data-bind="attr: {class: backgroundColor()+' background '}, style: { 'background-image': 'url('+img()+')'}">	
 						<!-- ko if: icon -->
 							<span class="icon" data-bind="attr: {'data-icon' : icon()}"></span>
@@ -80,7 +80,7 @@
 			</div>
 			<!-- ko foreach: blocks -->
 				<!--ko if: interacts -->
-					<div class="tab" data-bind="click: $parent.navigateToBlock, attr: {id: id()+'Tab'}">
+					<div class="tab" data-bind="event: {mousedown: $parent.navigateToBlock}, attr: {id: id()+'Tab'}">
 						<div data-bind="attr: {class: backgroundColor()+' background '}">	
 							<!-- ko if: icon -->
 								<span class="icon" data-bind="attr: {'data-icon' : icon()}"></span>
