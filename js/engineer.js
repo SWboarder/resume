@@ -152,11 +152,11 @@ var resume_model = function(){
 		self.blocks.push(new block_model(blocks[i]));
 	}
 
-	self.touchNavigateToBlock = function(event){
+	self.touchNavigateToBlock = function(data, event){
 		cosnole.log("touch nav");
 		console.log(event);
 		event.preventDefault();
-		var obj = this;
+		var obj = data;
 		var offset = $('#'+obj.id()+'Block').offset().top;
 		$(document).scrollTop(offset);
 	}
