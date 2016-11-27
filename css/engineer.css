@@ -531,7 +531,8 @@
 			padding-left: 5%;
 			padding-right: 5%;
 			padding-bottom: 25px;
-			margin-right: 6%;
+			/*margin-right: 6%;*/
+			float: left;
 			display: inline-block;
 			min-height: 640px;
 			text-align: center;
