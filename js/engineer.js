@@ -200,9 +200,9 @@ var resume_model = function(){
     	self.width(window.innerWidth);
     });
 
-    $(document.body).bind('touchmove', function(event) {
-		event.preventDefault();
-	}, false); 
+ //    $(document.body).bind('touchmove', function(event) {
+	// 	event.preventDefault();
+	// }, false); 
 
     self.hideCondensedContent = function(){
 		var collapsibles = $('.condensed');
