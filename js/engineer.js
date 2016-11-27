@@ -165,7 +165,7 @@ var resume_model = function(){
 		console.log("reg nav");
 		var obj = this;
 		var offset = $('#'+obj.id()+'Block').offset().top;
-		$(document).scrollTop(offset);
+		$(document.body).scrollTop(offset);
 	}
 
 	self.expandBlock = function(obj){
