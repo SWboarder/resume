@@ -147,6 +147,7 @@ var resume_model = function(){
 	var self = this;
 	self.blocks = ko.observableArray();
 	self.width = ko.observable(window.innerWidth);
+	self.height = ko.observable(window.innerHeight);
 
 	for(var i = 0; i<blocks.length;i++){
 		self.blocks.push(new block_model(blocks[i]));
@@ -197,6 +198,7 @@ var resume_model = function(){
 
     $(window).resize(function(){
     	self.width(window.innerWidth);
+    	self.height(window.innerHeight);
     });
 
  //    $(document.body).bind('touchmove', function(event) {
