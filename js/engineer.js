@@ -153,13 +153,14 @@ var resume_model = function(){
 	}
 
 	self.touchNavigateToBlock = function(data, event){
-		event.preventDefault();
 		var obj = data;
 		var offset = $('#'+obj.id()+'Block').offset().top;
 		$(document).scrollTop(offset);
+		event.stopPropagation();
 	}
 
-	self.navigateToBlock = function(){
+	self.navigateToBlock = function(data, event){
+		console.log(data);
 		console.log("reg nav");
 		var obj = this;
 		var offset = $('#'+obj.id()+'Block').offset().top;
