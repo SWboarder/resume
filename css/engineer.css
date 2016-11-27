@@ -484,6 +484,7 @@
 			justify-content: center;
 			align-items: center;
 			flex-wrap: wrap;
+			background-color: #04bd95;
 		}
 
 		.block{
