@@ -153,8 +153,6 @@ var resume_model = function(){
 	}
 
 	self.touchNavigateToBlock = function(data, event){
-		cosnole.log("touch nav");
-		console.log(event);
 		event.preventDefault();
 		var obj = data;
 		var offset = $('#'+obj.id()+'Block').offset().top;
