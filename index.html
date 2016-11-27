@@ -10,6 +10,7 @@
 		<meta name="author" content="Kristine Tomlinson">
 		<meta name="description" content="The Online Resume of Kristine Tomlinson">
 		<meta name="keywords" content="Kristine, Tomlinson, Online, Resume, electrical, engineer, snowboarder, web designer">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<link rel="icon" type="image/x-icon" href="./images/website_icon.png">
 		<link rel="stylesheet" type="text/css" href="./css/engineer.css">
 		<link rel="stylesheet" type="text/css" href="./css/styles.css">
@@ -58,7 +59,7 @@
 
 		<!--THE MAIN PAGE-->
 			<!-- ko foreach: blocks -->
-				<div class="block" data-bind="event: {mouseover: $parent.expandBlock, mouseout: $parent.shrinkBlock, mousedown: $parent.navigateToBlock}, css: {'interacts' : interacts()}, attr: {id: id()}">
+				<div class="block" data-bind="event: {touchstart: $parent.touchNavigateToBlock, mouseover: $parent.expandBlock, mouseout: $parent.shrinkBlock, mousedown: $parent.navigateToBlock}, css: {'interacts' : interacts()}, attr: {id: id()}">
 					<div data-bind="attr: {class: backgroundColor()+' background '}, style: { 'background-image': 'url('+img()+')'}">	
 						<!-- ko if: icon -->
 							<span class="icon" data-bind="attr: {'data-icon' : icon()}"></span>
@@ -80,7 +81,7 @@
 			</div>
 			<!-- ko foreach: blocks -->
 				<!--ko if: interacts -->
-					<div class="tab" data-bind="event: {mousedown: $parent.navigateToBlock}, attr: {id: id()+'Tab'}">
+					<div class="tab" data-bind="event: {touchstart: $parent.touchNavigateToBlock, mousedown: $parent.navigateToBlock}, attr: {id: id()+'Tab'}">
 						<div data-bind="attr: {class: backgroundColor()+' background '}">	
 							<!-- ko if: icon -->
 								<span class="icon" data-bind="attr: {'data-icon' : icon()}"></span>
@@ -100,13 +101,12 @@
 			<br><br>
 			<div class="aboutText containerText translucent" style="padding-bottom: 0; padding-top: 0;">
 				<div class="innerTextContainer translucent">
-						<div class="padding">
-							<h2>Welcome to my Online Resume!</h2>
-							<br><br>
-							<p>Feel free to take a look at some of the accomplishments I have achieved over my 26 years of existence. If you have any questions, please don't hesitate to <a data-bind="click: goToContact">get in touch</a> with me.</p><br><br>
-							<!-- <p>In a rush? Download a pdf version of my resume!</p><br><br>
-							<a href="./documents/KristineTomlinsonResume.pdf"><div id="download">Download Resume</div></a> -->
-						</div>
+					<div class="padding">
+						<h2>Welcome to my Online Resume!</h2>
+						<br><br>
+						<p>Feel free to take a look at some of the accomplishments I have achieved over my 26 years of existence. If you have any questions, please don't hesitate to <a data-bind="click: goToContact">get in touch</a> with me.</p><br><br>
+						<!-- <p>In a rush? Download a pdf version of my resume!</p><br><br>
+						<a href="./documents/KristineTomlinsonResume.pdf"><div id="download">Download Resume</div></a> -->
 					</div>
 				</div>
 				<div class="educationText containerText translucent" style="padding-bottom: 25px;">
