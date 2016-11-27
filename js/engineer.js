@@ -201,9 +201,9 @@ var resume_model = function(){
     	self.height(window.innerHeight);
     });
 
-    $(document.body).bind('touchmove', function(event) {
-		event.preventDefault();
-	}, false); 
+ //    $(document.body).bind('touchmove', function(event) {
+	// 	event.preventDefault();
+	// }, false); 
 
     self.hideCondensedContent = function(){
 		var collapsibles = $('.condensed');
@@ -244,6 +244,10 @@ $(document).ready(function(){
 });
 
 $(window).on("load", function(){
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
 	var loader = document.getElementById("loader");
 	loader.style.opacity = "0";
 	//Use delay so that you can see the fade before the loader is destroyed, KAPOW!
