@@ -161,17 +161,13 @@ var resume_model = function(){
 	}
 
 	self.navigateToBlock = function(data, event){
-		console.log(data);
-		console.log("reg nav");
 		var obj = this;
 		var offset = $('#'+obj.id()+'Block').offset().top;
 		$(document.body).scrollTop(offset);
 	}
 
 	self.expandBlock = function(obj){
-		console.log(obj);
 		if(obj.interacts() && self.width() > 640){
-			console.log("expand");
 			$("#"+obj.interacts()).addClass('hide');
 			$("#"+obj.id()).addClass('grow');
 		}
@@ -180,7 +176,6 @@ var resume_model = function(){
 	self.shrinkBlock = function(obj){
 		// var obj = this;
 		if(obj.interacts() && self.width() > 640){
-			console.log("shrink");
 			$("#"+obj.interacts()).removeClass('hide');
 			$("#"+obj.id()).removeClass('grow');
 		}
@@ -192,7 +187,6 @@ var resume_model = function(){
 
 	self.goToContact = function(){
 		var offset = $('#contactBlock').offset().top;
-		console.log(offset);
 		$(document).scrollTop(offset);
 	}
 
@@ -207,6 +201,7 @@ var resume_model = function(){
 
     $(document.body).bind('touchmove', function(event) {
 		self.check_dimensions();
+		event.stopPropagation();
 	}); 
 
     self.hideCondensedContent = function(){
@@ -233,17 +228,6 @@ var resume_model = function(){
 $(document).ready(function(){
 	viewModel = new resume_model();
 	ko.applyBindings(viewModel,document.getElementsByTagName('html')[0]);
-	// var blocks = $('.block');
-	// console.log(blocks);
-	// for(var i = 0; i<blocks.length;i++){
-	// 	if(blocks[i].className.indexOf('interacts') != -1){
-	// 		console.log(blocks[i].id);
-	// 		console.log(blocks[i].className);
-
-	// 		// blocks[i].onmouseover = viewModel.expandBlock(blocks[i]);
-	// 		// blocks[i].onmouseleave = viewModel.shrinkBlock(blocks[i]);
-	// 	}
-	// }
 	viewModel.hideCondensedContent();
 });
 
