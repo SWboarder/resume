@@ -196,14 +196,18 @@ var resume_model = function(){
 		$(document).scrollTop(offset);
 	}
 
-    $(window).resize(function(){
+    self.check_dimensions = function(){
     	self.width(window.innerWidth);
     	self.height(window.innerHeight);
+    }
+
+    $(window).resize(function(){
+    	self.check_dimensions();
     });
 
- //    $(document.body).bind('touchmove', function(event) {
-	// 	event.preventDefault();
-	// }, false); 
+    $(document.body).bind('touchmove', function(event) {
+		self.check_dimensions();
+	}); 
 
     self.hideCondensedContent = function(){
 		var collapsibles = $('.condensed');
