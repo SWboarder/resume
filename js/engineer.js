@@ -149,6 +149,8 @@ var resume_model = function(){
 	self.width = ko.observable(window.innerWidth);
 	self.height = ko.observable(window.innerHeight);
 
+	var touchMoving = false;
+
 	for(var i = 0; i<blocks.length;i++){
 		self.blocks.push(new block_model(blocks[i]));
 	}
@@ -156,8 +158,11 @@ var resume_model = function(){
 	self.touchNavigateToBlock = function(data, event){
 		var obj = data;
 		var offset = $('#'+obj.id()+'Block').offset().top;
-		$(document).scrollTop(offset);
-		event.stopPropagation();
+		if(!touchMoving){
+			$(document).scrollTop(offset);
+			event.stopPropagation();
+		}
+		touchMoving = false;
 	}
 
 	self.navigateToBlock = function(data, event){
@@ -200,8 +205,17 @@ var resume_model = function(){
     });
 
     $(document.body).bind('touchmove', function(event) {
+    	touchMoving = true;
 		self.check_dimensions();
 		event.stopPropagation();
+	}); 
+
+	$(window).on('swipe', function(event) {
+		event.preventDefault();
+	}); 
+
+	$(window).on('slide', function(event) {
+		event.preventDefault();
 	}); 
 
     self.hideCondensedContent = function(){
