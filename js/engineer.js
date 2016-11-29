@@ -159,7 +159,7 @@ var resume_model = function(){
 		var obj = data;
 		var offset = $('#'+obj.id()+'Block').offset().top;
 		if(!touchMoving){
-			$(document).scrollTop(offset);
+			$(window).scrollTop(offset);
 			event.stopPropagation();
 		}
 		touchMoving = false;
@@ -168,7 +168,7 @@ var resume_model = function(){
 	self.navigateToBlock = function(data, event){
 		var obj = this;
 		var offset = $('#'+obj.id()+'Block').offset().top;
-		$(document.body).scrollTop(offset);
+		$(window).scrollTop(offset);
 	}
 
 	self.expandBlock = function(obj){
@@ -187,12 +187,12 @@ var resume_model = function(){
 	}
 
 	self.goHome = function(){
-		$(document).scrollTop(0);
+		$(window).scrollTop(0);
 	}
 
 	self.goToContact = function(){
 		var offset = $('#contactBlock').offset().top;
-		$(document).scrollTop(offset);
+		$(window).scrollTop(offset);
 	}
 
     self.check_dimensions = function(){
@@ -204,7 +204,7 @@ var resume_model = function(){
     	self.check_dimensions();
     });
 
-    $(document.body).bind('touchmove', function(event) {
+    $(window).bind('touchmove', function(event) {
     	touchMoving = true;
 		self.check_dimensions();
 		event.stopPropagation();
