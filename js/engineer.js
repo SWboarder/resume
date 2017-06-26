@@ -157,18 +157,22 @@ var resume_model = function(){
 
 	self.touchNavigateToBlock = function(data, event){
 		var obj = data;
-		var offset = $('#'+obj.id()+'Block').offset().top;
-		if(!touchMoving){
-			$(window).scrollTop(offset);
-			event.stopPropagation();
+		if(obj.interacts()){
+			var offset = $('#'+obj.id()+'Block').offset().top;
+			if(!touchMoving){
+				$(window).scrollTop(offset);
+				event.stopPropagation();
+			}
+			touchMoving = false;
 		}
-		touchMoving = false;
 	}
 
 	self.navigateToBlock = function(data, event){
 		var obj = this;
-		var offset = $('#'+obj.id()+'Block').offset().top;
-		$(window).scrollTop(offset);
+		if(obj.interacts()){
+			var offset = $('#'+obj.id()+'Block').offset().top;
+			$(window).scrollTop(offset);
+		}
 	}
 
 	self.expandBlock = function(obj){
